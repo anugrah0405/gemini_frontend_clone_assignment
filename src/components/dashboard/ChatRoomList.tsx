@@ -122,7 +122,7 @@ export default function ChatRoomList({ onRoomSelect, externalSearch }: ChatRoomL
                   e.stopPropagation();
                   handleDeleteRoom(room.id, room.title);
                 }}
-                className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-100 dark:hover:bg-red-900/20 transition-all"
+                className="lg:opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-100 dark:hover:bg-red-900/20 transition-all"
               >
                 <Trash2 className="h-4 w-4 text-red-500" />
               </button>
