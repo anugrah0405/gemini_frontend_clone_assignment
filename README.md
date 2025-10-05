@@ -133,4 +133,4 @@ src/
 
 ## Notes
 
-This project is intentionally client-side and simulates backend actions (OTP, AI replies) for assignment/demo purposes. No real OTP or AI services are integrated.
+This project is intentionally client-side and simulates backend actions (OTP, AI replies) for assignment/demo purposes. No real OTP or AI services are integrated. Enter `123456` as OTP.
