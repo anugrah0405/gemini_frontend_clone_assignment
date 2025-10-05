@@ -4,7 +4,12 @@ This repository contains a Next.js 15 app that simulates a Gemini-style conversa
 ## Live demo
 - [Live Deployment Link](https://gemini-frontend-clone-assignment-flame.vercel.app/).
 ## Quick start
-1. Install dependencies:
+1. Clone the repository:
+```powershell
+git clone https://github.com/anugrah0405/gemini_frontend_clone_assignment.git
+cd gemini_frontend_clone_assignment
+```
+2. Install dependencies:
 ```powershell
 npm install
 ```
@@ -12,11 +17,11 @@ npm install
 ```powershell
 npm install --legacy-peer-deps
 ```
-2. Run the dev server:
+3. Run the dev server:
 ```powershell
 npm run dev
 ```
-3. Open http://localhost:3000 in your browser.
+4. Open http://localhost:3000 in your browser.
 ## Features implemented
 - OTP login flow (simulated): phone entry + OTP verification using `setTimeout`.
 - Country code picker fetching data from REST Countries API (`restcountries.com`).
@@ -96,8 +101,7 @@ src/
 │   └── ui/
 │       ├── ConfirmModal.tsx
 │       ├── LoadingSkeleton.tsx
-│       ├── ThemeToggle.tsx
-│       └── Toaster.tsx
+│       └── ThemeToggle.tsx
 ├── hooks/
 │   ├── useAuth.ts
 │   ├── useChat.ts
@@ -125,17 +129,8 @@ src/
 ## Deployment
 
 1. Push to GitHub and connect to Vercel (recommended) or Netlify.
-2. On Vercel, import the repository and the default settings will work for Next.js App Router.
-
-## Remaining / optional improvements
-
-- Convert all timestamp types to strict `string` in types (simpler and more consistent). Currently types accept `string | Date` for gradual migration.
-- Add automated tests for UI flows (React Testing Library) and unit tests for hooks.
-- E2E tests via Playwright to validate keyboard flows and message behaviors.
-- Cleaning up and compressing stored messages for a production-ready app.
+2. On Vercel, import the repository and the default settings will work for Next.js App Router except the install command. Use `npm install --legacy-peer-deps`
 
 ## Notes
 
 This project is intentionally client-side and simulates backend actions (OTP, AI replies) for assignment/demo purposes. No real OTP or AI services are integrated.
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
