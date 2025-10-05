@@ -1,4 +1,3 @@
-// components/layout/Header.tsx
 'use client';
 
 import { useAuth } from '@/src/hooks/useAuth';

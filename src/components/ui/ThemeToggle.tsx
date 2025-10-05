@@ -1,4 +1,3 @@
-// components/ui/ThemeToggle.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -8,7 +7,6 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    // Check initial theme
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     

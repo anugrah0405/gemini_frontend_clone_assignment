@@ -1,9 +1,6 @@
-// components/dashboard/SearchBar.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
 import { Search, X } from 'lucide-react';
-import { useDebounce } from '@/src/hooks/useDebounce';
 
 interface SearchBarProps {
   value: string;

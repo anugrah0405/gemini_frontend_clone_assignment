@@ -1,4 +1,3 @@
-// components/chat/MessageInput.tsx
 'use client';
 
 import { useState, useRef, ChangeEvent } from 'react';
@@ -24,7 +23,6 @@ export default function MessageInput() {
     register,
     handleSubmit,
     reset,
-    setValue,
     watch,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
@@ -127,7 +125,6 @@ export default function MessageInput() {
         </div>
       )}
 
-      {/* Input Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="relative">
         <div className="flex space-x-3">
           {/* Image Upload Button */}
@@ -140,7 +137,7 @@ export default function MessageInput() {
             <Image className="h-5 w-5" />
           </button>
 
-          {/* Hidden File Input */}
+          {/* Hidden Image File Input */}
           <input
             ref={fileInputRef}
             type="file"
@@ -149,7 +146,6 @@ export default function MessageInput() {
             className="hidden"
           />
 
-          {/* Text Input */}
           <div className="flex-1 relative">
             <textarea
               {...register('content')}
@@ -169,7 +165,6 @@ export default function MessageInput() {
             />
           </div>
 
-          {/* Send Button */}
           <button
             type="submit"
             disabled={isSubmitting || (!content.trim() && !imagePreview)}

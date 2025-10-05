@@ -1,4 +1,3 @@
-// components/dashboard/CreateChatRoom.tsx
 'use client';
 
 import { useState } from 'react';

@@ -1,4 +1,3 @@
-// app/layout.tsx
 'use client';
 
 import { Inter } from 'next/font/google';
@@ -18,7 +17,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    // Normalize persisted data shape on client startup
     normalizeStorage();
   }, []);
   return (
@@ -32,7 +30,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
-            {/* react-hot-toast toaster (top-center) */}
             <HotToaster position="top-center" />
           </ThemeProvider>
         </Provider>

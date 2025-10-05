@@ -1,4 +1,3 @@
-// components/ui/LoadingSkeleton.tsx
 'use client';
 
 export default function LoadingSkeleton() {
@@ -13,14 +12,12 @@ export default function LoadingSkeleton() {
             key={i}
             className={`flex items-start ${isUser ? 'justify-end' : 'justify-start'}`}
           >
-            {/* Avatar */}
             {!isUser && (
               <div className="flex-shrink-0 mr-3">
                 <div className="w-9 h-9 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse" />
               </div>
             )}
 
-            {/* Bubble */}
             <div className={`w-[75%] ${isUser ? 'text-right' : 'text-left'}`}>
               <div
                 className={`w-full inline-block rounded-2xl p-3 animate-pulse
@@ -36,7 +33,6 @@ export default function LoadingSkeleton() {
               </div>
             </div>
 
-            {/* Avatar on right for user messages */}
             {isUser && (
               <div className="flex-shrink-0 ml-3">
                 <div className="w-9 h-9 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse" />

@@ -1,4 +1,3 @@
-// hooks/useAuth.ts
 import { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, logout, setLoading } from '@/src/lib/slices/authSlice';
@@ -20,7 +19,6 @@ export const useAuth = () => {
       setTimeout(() => {
         dispatch(setLoading(false));
         setOtpSent(true);
-        // remember entered phone/country so verifyOTP can use them
         setPendingPhone(phone);
         setPendingCountryCode(countryCode);
         toast.success('OTP sent', 'A one-time password was sent to your phone.');
@@ -35,10 +33,9 @@ export const useAuth = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
         dispatch(setLoading(false));
-        if (otp === '123456') { // Mock valid OTP
+        if (otp === '123456') {
           const user = {
             id: '1',
-            // prefer explicit args (passed from OTPVerification), then pending values from sendOTP, then fallback
             phone: phone || pendingPhone || '1234567890',
             countryCode: countryCode || pendingCountryCode || '+1',
             name: 'User',

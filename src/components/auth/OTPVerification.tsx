@@ -1,14 +1,9 @@
-// components/auth/OTPVerification.tsx
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '@/src/hooks/useAuth';
 import { ArrowLeft, Loader2 } from 'lucide-react';
 import { useToast } from '@/src/hooks/useToast';
-
-type FormData = {
-  otp: string;
-};
 
 interface OTPVerificationProps {
   phone: string;
@@ -40,12 +35,10 @@ export default function OTPVerification({
     newOtp[index] = value;
     setOtp(newOtp);
 
-    // Auto-focus next input
     if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
 
-    // Auto-submit when all fields are filled
     if (newOtp.every(digit => digit) && index === 5) {
       handleSubmit(newOtp.join(''));
     }
@@ -64,7 +57,6 @@ export default function OTPVerification({
       const newOtp = pastedData.split('').slice(0, 6);
       setOtp([...newOtp, ...Array(6 - newOtp.length).fill('')]);
 
-      // Focus the next empty input or submit
       const nextIndex = Math.min(newOtp.length, 5);
       inputRefs.current[nextIndex]?.focus();
 
@@ -166,7 +158,7 @@ export default function OTPVerification({
             type="button"
             className="text-blue-600 hover:text-blue-500 font-medium"
             onClick={() => {
-              const timerId: ReturnType<typeof setTimeout> = setTimeout(() => {
+              setTimeout(() => {
                 toast.success('OTP resent successfully!');
               }, 1000);
             }}

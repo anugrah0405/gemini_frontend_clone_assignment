@@ -1,9 +1,6 @@
-// components/chat/ChatRoom.tsx
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/src/lib/store';
 import { useChat } from '@/src/hooks/useChat';
 import Message from '@/src/components/chat/Message';
 import MessageInput from '@/src/components/chat/MessageInput';
@@ -18,29 +15,24 @@ export default function ChatRoom() {
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [isAtBottom, setIsAtBottom] = useState(true);
 
-  // Auto-scroll to bottom when new messages arrive and user is at bottom
   useEffect(() => {
     if (isAtBottom && messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isTyping, isAtBottom]);
 
-  // Handle scroll events for infinite scroll and scroll button visibility
   const handleScroll = useCallback(() => {
     if (!messagesContainerRef.current) return;
 
     const { scrollTop, scrollHeight, clientHeight } = messagesContainerRef.current;
     
-    // Check if user is at bottom
     const atBottom = scrollHeight - scrollTop - clientHeight < 100;
     setIsAtBottom(atBottom);
     
-    // Show scroll button if not at bottom
     setShowScrollButton(!atBottom);
 
-    // Load older messages when scrolling near top
     if (scrollTop < 100 && hasMore && !isLoading) {
-      loadMessages(currentChatRoom!.id, 2); // Load page 2 for demo
+      loadMessages(currentChatRoom!.id, 2);
     }
   }, [currentChatRoom, hasMore, isLoading, loadMessages]);
 

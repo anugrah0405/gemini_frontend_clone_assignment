@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 
 import { useEffect } from 'react';
@@ -7,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { RootState } from '@/src/lib/store';
 import Header from '@/src/components/layout/Header';
 import Sidebar from '@/src/components/layout/Sidebar';
-import ChatRoomList from '@/src/components/dashboard/ChatRoomList';
 import { useChat } from '@/src/hooks/useChat';
 
 export default function Dashboard() {
@@ -20,8 +18,7 @@ export default function Dashboard() {
       router.push('/login');
       return;
     }
-    
-    // Check for stored user data
+
     const storedUser = localStorage.getItem('user');
     if (!storedUser) {
       router.push('/login');
@@ -38,10 +35,10 @@ export default function Dashboard() {
   return (
     <div className="h-screen flex flex-col bg-white dark:bg-gray-900">
       <Header />
-      
+
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        
+
         <main className="flex-1 overflow-hidden">
           <div className="h-full flex flex-col">
             <div className="flex-1 overflow-hidden p-6">

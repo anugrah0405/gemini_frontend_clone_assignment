@@ -1,4 +1,3 @@
-// components/auth/LoginForm.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -154,10 +153,8 @@ export default function LoginForm({ onPhoneSubmit }: LoginFormProps) {
       setIsDarkMode(isDark);
     };
 
-    // Initial check
     checkDarkMode();
 
-    // Observe for class changes
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'class') {
@@ -175,7 +172,6 @@ export default function LoginForm({ onPhoneSubmit }: LoginFormProps) {
   }, []);
 
   useEffect(() => {
-    // Fetch countries from REST Countries API
     const fetchCountries = async () => {
       try {
         const response = await fetch('https://restcountries.com/v3.1/all?fields=name,idd,cca2');
@@ -193,7 +189,7 @@ export default function LoginForm({ onPhoneSubmit }: LoginFormProps) {
         setCountries(countryList);
       } catch (error) {
         console.error('Error fetching countries:', error);
-        // Fallback to some common countries
+
         const fallbackCountries: Country[] = [
           { name: 'United States', dialCode: '+1', code: '1' },
           { name: 'United Kingdom', dialCode: '+44', code: '44' },
@@ -231,7 +227,6 @@ export default function LoginForm({ onPhoneSubmit }: LoginFormProps) {
         <div className="flex space-x-3">
           {/* Country Code Dropdown */}
           <div className="w-18">
-            {/* react-select for country codes */}
             <Select
               inputId="country-select"
               instanceId="country-select"

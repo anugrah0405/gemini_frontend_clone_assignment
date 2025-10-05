@@ -1,4 +1,3 @@
-// components/chat/Message.tsx
 'use client';
 
 import { useState } from 'react';
@@ -24,7 +23,7 @@ export default function Message({ message }: MessageProps) {
         title: 'Copied to clipboard',
         type: 'success',
       });
-      
+
       setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
       toast({
@@ -45,10 +44,9 @@ export default function Message({ message }: MessageProps) {
       <div
         className={`
           flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center
-          ${
-            isAI
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600'
-              : 'bg-gradient-to-r from-green-500 to-blue-500'
+          ${isAI
+            ? 'bg-gradient-to-r from-blue-500 to-purple-600'
+            : 'bg-gradient-to-r from-green-500 to-blue-500'
           }
         `}
       >
@@ -69,10 +67,9 @@ export default function Message({ message }: MessageProps) {
         <div
           className={`
             inline-block px-4 py-3 rounded-2xl
-            ${
-              isAI
-                ? 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white'
-                : 'bg-blue-500 text-white'
+            ${isAI
+              ? 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white'
+              : 'bg-blue-500 text-white'
             }
           `}
         >
@@ -93,11 +90,9 @@ export default function Message({ message }: MessageProps) {
             </div>
           )}
 
-          {/* Message Text */}
           <p className="whitespace-pre-wrap">{message.content}</p>
         </div>
 
-        {/* Timestamp and Actions */}
         <div
           className={`
             flex items-center space-x-2 mt-2
@@ -107,15 +102,14 @@ export default function Message({ message }: MessageProps) {
           <span className="text-xs text-gray-500 dark:text-gray-400">
             {format(new Date(message.timestamp), 'h:mm a')}
           </span>
-          
+
           <button
             onClick={handleCopy}
             className={`
               opacity-0 group-hover:opacity-100 p-1 rounded transition-all
-              ${
-                isAI
-                  ? 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
-                  : 'hover:bg-blue-400 text-blue-100 hover:text-white'
+              ${isAI
+                ? 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
+                : 'hover:bg-blue-400 text-blue-100 hover:text-white'
               }
             `}
           >

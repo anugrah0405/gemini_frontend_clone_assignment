@@ -1,9 +1,5 @@
-// lib/storage.ts
-// Utilities to normalize persisted localStorage data for messages/chatRooms.
-
 export function normalizeStorage() {
   try {
-    // Normalize chatRooms
     const chatRoomsRaw = localStorage.getItem('chatRooms');
     if (chatRoomsRaw) {
       const rooms = JSON.parse(chatRoomsRaw);
@@ -18,7 +14,6 @@ export function normalizeStorage() {
       }
     }
 
-    // Normalize messages
     const messagesRaw = localStorage.getItem('messages');
     if (messagesRaw) {
       const all = JSON.parse(messagesRaw);
@@ -30,7 +25,6 @@ export function normalizeStorage() {
               ...m,
               timestamp: typeof m.timestamp === 'string' ? m.timestamp : new Date(m.timestamp).toISOString(),
             }));
-            // ensure oldest->newest
             if (normalized.length >= 2) {
               const first = normalized[0].timestamp;
               const last = normalized[normalized.length - 1].timestamp;
@@ -45,8 +39,6 @@ export function normalizeStorage() {
       }
     }
   } catch (err) {
-    // ignore normalization errors
-    // eslint-disable-next-line no-console
     console.warn('Storage normalization failed', err);
   }
 }

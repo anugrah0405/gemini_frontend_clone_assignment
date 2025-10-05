@@ -1,11 +1,9 @@
-// components/layout/Sidebar.tsx
 'use client';
 
 import { useState } from 'react';
 import { useChat } from '@/src/hooks/useChat';
 import ChatRoomList from '@/src/components/dashboard/ChatRoomList';
 import CreateChatRoom from '@/src/components/dashboard/CreateChatRoom';
-import SearchBar from '@/src/components/dashboard/SearchBar';
 import { Plus, MessageSquare, Menu, X } from 'lucide-react';
 
 export default function Sidebar() {
@@ -29,7 +27,6 @@ export default function Sidebar() {
         <Menu className="h-5 w-5 text-gray-600 dark:text-gray-400" />
       </button>
 
-      {/* Overlay */}
       {isMobileOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"

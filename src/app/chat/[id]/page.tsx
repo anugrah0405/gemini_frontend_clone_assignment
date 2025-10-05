@@ -1,4 +1,3 @@
-// app/chat/[id]/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -28,12 +27,10 @@ export default function ChatRoomPage() {
     }
 
     if (!currentChatRoom) {
-      // Chat room not found, redirect to dashboard
       router.push('/');
       return;
     }
 
-    // Set current chat room and load messages
     setCurrentChatRoom(currentChatRoom);
     loadMessages(chatRoomId);
 

@@ -1,4 +1,3 @@
-// components/dashboard/ChatRoomList.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -15,7 +14,6 @@ import ConfirmModal from '@/src/components/ui/ConfirmModal';
 
 interface ChatRoomListProps {
   onRoomSelect?: () => void;
-  // optional external search term controlled by parent (e.g., Sidebar)
   externalSearch?: string;
 }
 
@@ -24,7 +22,6 @@ export default function ChatRoomList({ onRoomSelect, externalSearch }: ChatRoomL
   const { removeChatRoom, setCurrentChatRoom } = useChat();
   const [filteredRooms, setFilteredRooms] = useState(chatRooms);
   const [searchTerm, setSearchTerm] = useState('');
-  // if parent provides an external search term, prefer that
   const effectiveSearch = externalSearch !== undefined ? externalSearch : searchTerm;
   const debouncedSearchTerm = useDebounce(effectiveSearch, 250);
   const router = useRouter();
@@ -44,11 +41,9 @@ export default function ChatRoomList({ onRoomSelect, externalSearch }: ChatRoomL
   };
 
   const handleDeleteRoom = async (roomId: string, roomTitle: string) => {
-    // open modal instead of confirm; store selected room in state
     setModalState({ open: true, roomId, roomTitle });
   };
 
-  // Modal state
   const [modalState, setModalState] = useState<{ open: boolean; roomId?: string; roomTitle?: string }>({ open: false });
 
   const handleModalConfirm = () => {
@@ -143,7 +138,7 @@ export default function ChatRoomList({ onRoomSelect, externalSearch }: ChatRoomL
           </div>
         )}
       </div>
-      {/* Confirm deletion modal */}
+      {/* Confirm delete modal */}
       <ConfirmModal
         open={modalState.open}
         title={`Delete "${modalState.roomTitle || ''}"?`}

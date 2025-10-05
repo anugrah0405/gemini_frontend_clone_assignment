@@ -1,4 +1,3 @@
-// hooks/useChat.ts
 import { useState, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/src/lib/store';
@@ -17,21 +16,6 @@ import {
 } from '@/src/lib/slices/chatSlice';
 import { ChatRoom, Message } from '@/src/types';
 import { useToast } from '@/src/hooks/useToast';
-
-interface UseChatReturn {
-    chatRooms: ChatRoom[]
-    currentChatRoom: ChatRoom | null
-    messages: Message[]
-    isLoading: boolean
-    hasMore: boolean
-    isTyping: boolean
-    loadChatRooms: () => void
-    createChatRoom: (title: string) => ChatRoom
-    removeChatRoom: (id: string) => void
-    setCurrentChatRoom: (room: ChatRoom) => void
-    loadMessages: (chatRoomId: string, page?: number) => void
-    sendMessage: (content: string, imageUrl?: string) => void
-}
 
 export const useChat = () => {
     const dispatch = useDispatch();
@@ -57,7 +41,6 @@ export const useChat = () => {
                 createdAt: typeof room.createdAt === 'string' ? room.createdAt : new Date(room.createdAt).toISOString(),
                 updatedAt: typeof room.updatedAt === 'string' ? room.updatedAt : new Date(room.updatedAt).toISOString(),
             }));
-            // Ensure chatRooms are ordered oldest -> newest (createdAt)
             rooms.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
             dispatch(setChatRooms(rooms));
         }
@@ -106,7 +89,6 @@ export const useChat = () => {
                 }
             }
 
-            // Reverse pagination for infinite scroll
             const startIndex = Math.max(0, roomMessages.length - page * 20);
             const endIndex = roomMessages.length - (page - 1) * 20;
             const pageMessages = roomMessages.slice(startIndex, endIndex).map(msg => ({
@@ -175,7 +157,6 @@ export const useChat = () => {
             dispatch(addMessage(aiMessage));
             dispatch(setIsTyping(false));
 
-            // Save AI message
             const updatedAllMessages = JSON.parse(localStorage.getItem('messages') || '{}');
             const updatedRoomMessages = updatedAllMessages[currentChatRoom.id] || [];
             updatedAllMessages[currentChatRoom.id] = [...updatedRoomMessages, aiMessage];
