@@ -2,7 +2,7 @@
 This repository contains a Next.js 15 app that simulates a Gemini-style conversational AI chat experience. It implements OTP login, chatroom management, simulated AI messaging, image upload, and a number of modern UX features.
 
 ## Live demo
-- If deployed, include your Vercel/Netlify URL here.
+- [Live Deployment Link](https://gemini-frontend-clone-assignment-flame.vercel.app/).
 ## Quick start
 1. Install dependencies:
 ```powershell
